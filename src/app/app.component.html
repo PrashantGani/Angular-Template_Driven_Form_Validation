@@ -1,0 +1,122 @@
+<div class="container mt-4">
+
+  <h1 class="text-center">Template driven form with validation in simplest way</h1>
+
+  <form #register="ngForm" (ngSubmit)="register.form.valid && registerFn()">
+
+    <div class="mb-3">
+
+      <label for="fname" class="form-label">First Name</label>
+
+      <input type="text" class="form-control" id="fname" placeholder="First Name" [(ngModel)]="form.fname" name="fname" #fname="ngModel" required minlength="3" [ngClass]="{error : fname.errors && fname.touched}">
+
+      <div *ngIf="fname.errors && fname.touched">
+
+        <small class="text-danger" *ngIf="fname.errors['required']">First Name field is requird</small>
+
+        <small class="text-danger" *ngIf="fname.errors['minlength']">First Name contains atleast 3 characters</small>
+
+      </div>
+
+    </div>
+
+ 
+
+    <div class="mb-3">
+
+      <label for="lname" class="form-label">Last Name</label>
+
+      <input type="text" class="form-control" id="lname" placeholder="Last Name" [(ngModel)]="form.lname" name="lname" #lname="ngModel" required minlength="3" [ngClass]="{error : lname.errors && lname.touched}">
+
+      <div *ngIf="lname.errors && lname.touched">
+
+        <small class="text-danger" *ngIf="lname.errors['required']">Last Name field is requird</small>
+
+        <small class="text-danger" *ngIf="lname.errors['minlength']">Last Name contains atleast 3 characters</small>
+
+      </div>
+
+    </div>
+
+    <div class="mb-3">
+
+      <label for="age" class="form-label">Age</label>
+
+      <input type="number" class="form-control" id="age" placeholder="Age" [(ngModel)]="form.age" name="age" #age="ngModel" required min="6" max="100" [pattern]="integreRegex" [ngClass]="{error : age.errors && age.touched}">
+
+      <div *ngIf="age.errors && age.touched">
+
+        <small class="text-danger" *ngIf="age.errors['required']">Age field is requird</small>
+
+        <small class="text-danger" *ngIf="age.errors['min'] || age.errors['max']">Age must be in between 6 years to 100 years.</small><br>
+
+        <small class="text-danger" *ngIf="age.errors['pattern']">Please enter a valid age.</small>
+
+      </div>
+
+    </div>
+
+ 
+
+    <div class="mb-3">
+
+      <label for="mobile" class="form-label">Mobile</label>
+
+      <input type="text" class="form-control" id="mobile" placeholder="Mobile" [(ngModel)]="form.mobile" name="mobile" #mobile="ngModel" required minlength="10" maxlength="10" [pattern]="integreRegex" [ngClass]="{error : mobile.errors && mobile.touched}">
+
+      <div *ngIf="mobile.errors && mobile.touched">
+
+        <small class="text-danger" *ngIf="mobile.errors['required']">Mobile field is requird</small>
+
+        <small class="text-danger" *ngIf="mobile.errors['minlength'] || mobile.errors['maxlength'] || mobile.errors['pattern']">Please enter a valid mobile no.</small>
+
+      </div>
+
+    </div>
+
+ 
+
+    <div class="mb-3">
+
+      <label for="email" class="form-label">Email</label>
+
+      <input type="email" class="form-control" id="email" placeholder="Email" [(ngModel)]="form.email" name="email" #email="ngModel" required maxlength="32" [pattern]="emailRegex" [ngClass]="{error : email.errors && email.touched}">
+
+      <div *ngIf="email.errors && email.touched">
+
+        <small class="text-danger" *ngIf="email.errors['required']">Email field is requird</small>
+
+        <small class="text-danger" *ngIf="email.errors['maxlength']">Email should be maximum 32 characters long.</small>
+
+        <small class="text-danger" *ngIf="email.errors['pattern']">Please enter a valid email.</small>
+
+      </div>
+
+    </div>
+
+    <div class="mb-3">
+
+      <label for="password" class="form-label">Password</label>
+
+      <input type="password" class="form-control" id="password" placeholder="Password" [(ngModel)]="form.password" name="password" #password="ngModel" required minlength="8" maxlength="32"  [ngClass]="{error : password.errors && password.touched}">
+
+      <div *ngIf="password.errors && password.touched">
+
+        <small class="text-danger" *ngIf="password.errors['required']">password field is requird</small>
+
+        <small class="text-danger" *ngIf="password.errors['minlength']">Please enter a valid password .</small>
+
+      </div>
+
+    </div>
+   
+
+    <div class="mb-3">
+
+      <input type="submit" class="btn btn-success" [disabled]="register.form.status === 'INVALID'">
+
+    </div>
+
+  </form>
+
+</div>
