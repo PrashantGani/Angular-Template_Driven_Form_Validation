@@ -1,0 +1,21 @@
+.error {
+    border: 1px solid red;
+}
+.container{
+    width: 500px;
+}
+.save{
+    width: 100px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.form-label{
+    text-color:black
+}
+.container{
+    background-color: rgb(239, 240, 231);
+}
+.main {
+    background-color: #efe3dd;
+    }
+    
